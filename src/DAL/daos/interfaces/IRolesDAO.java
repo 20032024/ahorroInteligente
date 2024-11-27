@@ -1,5 +1,4 @@
 package DAL.daos.interfaces;
-
 import java.util.List;
 import DAL.entities.Role;
 

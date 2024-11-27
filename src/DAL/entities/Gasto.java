@@ -4,8 +4,6 @@ import java.sql.Date;
 
 public class Gasto {
     private int id_gasto; 
-   
-
     private int id_usuario; //Utilizo como referencia el id Usuario. 
     private Date fecha; 
     private double monto; 

@@ -1,7 +1,6 @@
 package DAL.converters;
 
 import java.util.stream.Collectors;
-
 import DAL.dtos.UsuarioDTO;
 import DAL.entities.Role;
 import DAL.entities.Usuarios;
