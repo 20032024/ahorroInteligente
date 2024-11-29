@@ -1,6 +1,6 @@
 package DAL.entities;
 
-public class Profesiones {
+public class Profesion {
     private int id_profesion;
     public int getId_profesion() {
         return id_profesion;

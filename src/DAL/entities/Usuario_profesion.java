@@ -1,6 +1,6 @@
 package DAL.entities;
 
-public class Usuarios_profesion {
+public class Usuario_profesion {
     private int id_usuario_profesion; 
     private int id_usuario; //utilizo esto como referencia que se debe implementar el id de Usuario. 
     private int id_profesion;
