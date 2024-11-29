@@ -1,36 +1,16 @@
 package DAL.dtos;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class UsuarioRegistroDTO {
-    private String nombre;             // Nombre del usuario
-    private String apellidoPaterno;    // Apellido paterno
-    private String apellidoMaterno;    // Apellido materno
-    private int edad;                  // Edad del usuario
-    private String correo;             // Correo electrónico
-    private String contraseña;         // Contraseña
-    private List<ProfesionDTO> profesiones; // Lista de profesiones asociadas
-    private LocalDate fechaRegistro;   // Fecha de registro (generada automáticamente)
+    private String nombre;
+    private String apPaterno;
+    private String apMaterno;
+    private byte edad;
+    private String correo;
+    private String contraseña;
+    private LocalDate fecha_registro;
 
-    // Constructor vacío
-    public UsuarioRegistroDTO() {
-    }
-
-    // Constructor completo
-    public UsuarioRegistroDTO(String nombre, String apellidoPaterno, String apellidoMaterno, int edad,
-                              String correo, String contraseña, List<ProfesionDTO> profesiones) {
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.edad = edad;
-        this.correo = correo;
-        this.contraseña = contraseña;
-        this.profesiones = profesiones;
-        this.fechaRegistro = LocalDate.now(); // Se genera automáticamente
-    }
-
-    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -39,27 +19,27 @@ public class UsuarioRegistroDTO {
         this.nombre = nombre;
     }
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
+    public String getApPaterno() {
+        return apPaterno;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public void setApPaterno(String apPaterno) {
+        this.apPaterno = apPaterno;
     }
 
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
+    public String getApMaterno() {
+        return apMaterno;
     }
 
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApMaterno(String apMaterno) {
+        this.apMaterno = apMaterno;
     }
 
-    public int getEdad() {
+    public byte getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(byte edad) {
         this.edad = edad;
     }
 
@@ -79,19 +59,11 @@ public class UsuarioRegistroDTO {
         this.contraseña = contraseña;
     }
 
-    public List<ProfesionDTO> getProfesiones() {
-        return profesiones;
+    public LocalDate getFecha_registro() {
+        return fecha_registro;
     }
 
-    public void setProfesiones(List<ProfesionDTO> profesiones) {
-        this.profesiones = profesiones;
-    }
-
-    public LocalDate getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecha_registro(LocalDate fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 }

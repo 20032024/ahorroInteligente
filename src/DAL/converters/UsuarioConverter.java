@@ -1,38 +1,32 @@
 package DAL.converters;
 
-import java.util.stream.Collectors;
-
+import DAL.entities.Usuario;
 import DAL.dtos.UsuarioDTO;
-import DAL.entities.Role;
-import DAL.entities.Usuarios;
 
-public class UsuarioConverter extends AbstractConverter<Usuarios, UsuarioDTO> {
+public class UsuarioConverter extends AbstractConverter<Usuario, UsuarioDTO> {
 
     @Override
-    public Usuarios toEntity(UsuarioDTO dto) {
-        Usuarios user = new Usuarios();
-        user.setId(dto.getId());
-        // Prevent Null Exception
-        if (dto.getRoles() != null) {
+    public Usuario toEntity(UsuarioDTO dto) {
+        if (dto == null) return null;
 
-            user.setRoles(dto.getRoles().stream()
-                    .map(rol -> Role.valueOf(rol)).collect(Collectors.toList()));
-        }
-        return user;
+        Usuario usuario = new Usuario();
+        usuario.setId_usuario(dto.getId_usuario());
+        usuario.setNombre(dto.getNombre());
+        usuario.setCorreo(dto.getCorreo());
+        // No incluimos lista de gastos aquí porque no se pasa en UsuarioDTO
+        return usuario;
     }
 
     @Override
-    public UsuarioDTO toDTO(Usuarios entity) {
-        UsuarioDTO user = new UsuarioDTO();
-        user.setId(entity.getId());
-        //user.setUserName(entity.getUserName());
-        //user.setPass(entity.getPass());
+    public UsuarioDTO toDTO(Usuario entity) {
+        if (entity == null) return null;
 
-        // Prevent Null Exception
-        if (entity.getRoles() != null) {
-            user.setRoles(entity.getRoles().stream()
-                    .map(rol -> rol.getDescription()).collect(Collectors.toList()));
-        }
-        return user;
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setId_usuario(entity.getId_usuario());
+        dto.setNombre(entity.getNombre());
+        dto.setCorreo(entity.getCorreo());
+        dto.setGastos(null); // En este ejemplo dejamos vacía la lista de gastos
+        return dto;
     }
 }
+

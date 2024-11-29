@@ -1,6 +1,6 @@
 package DAL.entities;
 
-public class Tipos_ingreso {
+public class Tipo_ingreso {
     private int id_tipo_ingreso;
     private int clave_tipo_ingeso; //no sé qué es cve jajajaja
     private String descripcion;

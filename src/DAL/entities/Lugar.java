@@ -3,7 +3,7 @@ package DAL.entities;
 public class Lugar {
     private int id_lugar;
     private String descripcion; 
-    private int clave_tipo_gasto;
+    private String clave;
     private double latitud;
     private double longitud;
 
@@ -20,11 +20,11 @@ public class Lugar {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public int getClave_tipo_gasto() {
-        return clave_tipo_gasto;
+    public String getClave() {
+        return clave;
     }
-    public void setClave_tipo_gasto(int clave_tipo_gasto) {
-        this.clave_tipo_gasto = clave_tipo_gasto;
+    public void setClave(String clave) {
+        this.clave = clave;
     } 
     public double getLatitud() {
         return latitud;

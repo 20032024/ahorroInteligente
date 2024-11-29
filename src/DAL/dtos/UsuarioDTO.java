@@ -3,34 +3,41 @@ package DAL.dtos;
 import java.util.List;
 
 public class UsuarioDTO {
-    private int id;
-    private String userName;
-    private String pass;
-    private List<String> roles;
+    private int id_usuario;
+    private String nombre;
+    private String correo;
+    private List<GastoDTO> gastos; // DTO para representar los gastos del usuario.
 
-    public int getId() {
-        return id;
-    }
-    public String getPass() {
-        return pass;
-    }
-    public String getUserName() {
-        return userName;
-    }
-    public List<String> getRoles() {
-        return roles;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+
+    public String getNombre() {
+        return nombre;
     }
-    public void setPass(String pass) {
-        this.pass = pass;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public List<GastoDTO> getGastos() {
+        return gastos;
+    }
+
+    public void setGastos(List<GastoDTO> gastos) {
+        this.gastos = gastos;
     }
 }
+

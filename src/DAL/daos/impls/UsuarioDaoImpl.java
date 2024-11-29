@@ -6,7 +6,7 @@ import java.util.List;
 
 import DAL.connection.PostgreSQL.PostgresDbConn;
 import DAL.daos.interfaces.IUsuarioDAO;
-import DAL.entities.Usuarios;
+import DAL.entities.Usuario;
 
 public class UsuarioDaoImpl implements IUsuarioDAO {
     private Connection conn;
@@ -17,22 +17,22 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
     }
     
     @Override
-    public List<Usuarios> getUsers() {
+    public List<Usuario> getUsers() {
         return null;
     }
 
     @Override
-    public Usuarios getUsersById(int id) {
+    public Usuario getUsersById(int id) {
         return null;
     }
 
     @Override
-    public void updateUser(Usuarios user) {
+    public void updateUser(Usuario user) {
         
     }
 
     @Override
-    public void deleteUser(Usuarios user) {
+    public void deleteUser(Usuario user) {
         
     }
     
