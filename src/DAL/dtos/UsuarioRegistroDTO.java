@@ -1,6 +1,7 @@
 package DAL.dtos;
 
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 public class UsuarioRegistroDTO {
     private String nombre;
@@ -9,7 +10,8 @@ public class UsuarioRegistroDTO {
     private byte edad;
     private String correo;
     private String contraseña;
-    private LocalDate fecha_registro;
+    private Date fechaRegistro;
+    private List<ProfesionDTO> profesiones; // Lista de profesiones del usuario
 
     public String getNombre() {
         return nombre;
@@ -59,11 +61,19 @@ public class UsuarioRegistroDTO {
         this.contraseña = contraseña;
     }
 
-    public LocalDate getFecha_registro() {
-        return fecha_registro;
+    public Date getFechaRegistro() {
+        return fechaRegistro;
     }
 
-    public void setFecha_registro(LocalDate fecha_registro) {
-        this.fecha_registro = fecha_registro;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public List<ProfesionDTO> getProfesiones() {
+        return profesiones;
+    }
+
+    public void setProfesiones(List<ProfesionDTO> profesiones) {
+        this.profesiones = profesiones;
     }
 }

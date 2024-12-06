@@ -30,7 +30,7 @@ public class GastoConverter extends AbstractConverter<Gasto, GastoDTO> {
 
         var LugarDTO = lugarService.getLugarById(entity.getId_lugar());
         var CategoriaDTO = categoriaService.getCategoriaById(entity.getId_categoria());
-        var tipoGasto = tipoGastoService.getTipoGastoById(entity.getId_tipo_gasto());
+        var tipoGasto = tipoGastoService.getTipoGastoById(entity.getId_tipoGasto());
         return new GastoDTO(
             entity.getId_usuario(),
             entity.getMonto(),

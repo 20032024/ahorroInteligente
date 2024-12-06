@@ -1,17 +1,17 @@
 package DAL.entities;
 
 public class Usuario_profesion {
-    private int id_usuario_profesion; 
+    private int id_usuarioProfesion; 
     private int id_usuario; //utilizo esto como referencia que se debe implementar el id de Usuario. 
     private int id_profesion;
-    private int id_tipo_ingreso;
+    private int id_tipoIngreso;
     private float monto_ingreso;  
 
-    public int getId_usuario_profesion() {
-        return id_usuario_profesion;
+    public int getId_usuarioProfesion() {
+        return id_usuarioProfesion;
     }
-    public void setId_usuario_profesion(int id_usuario_profesion) {
-        this.id_usuario_profesion = id_usuario_profesion;
+    public void setId_usuario_profesion(int id_usuarioProfesion) {
+        this.id_usuarioProfesion = id_usuarioProfesion;
     }
     public int getId_usuario() {
         return id_usuario;
@@ -19,11 +19,11 @@ public class Usuario_profesion {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
-    public int getId_tipo_ingreso() {
-        return id_tipo_ingreso;
+    public int getId_tipoIngreso() {
+        return id_tipoIngreso;
     }
-    public void setId_tipo_ingreso(int id_tipo_ingreso) {
-        this.id_tipo_ingreso = id_tipo_ingreso;
+    public void setId_tipoIngreso(int id_tipoIngreso) {
+        this.id_tipoIngreso = id_tipoIngreso;
     }
     public int getId_profesion() {
         return id_profesion;
