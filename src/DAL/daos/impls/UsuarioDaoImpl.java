@@ -27,7 +27,7 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
         @Override
         public boolean addUsuario(UsuarioRegistroDTO usuarioRegistroDTO) {
            boolean resultado = false;
-    String procedimiento = "{CALL registrar_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+        String procedimiento = "{CALL registrar_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 
     try (PreparedStatement stmt = conn.prepareStatement(procedimiento)) {
         // Crear una instancia de UsuarioConverter
@@ -142,5 +142,24 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
             e.printStackTrace();
         }
         return usuario;
+    }
+
+    @Override
+    public int validarCredenciales(String correo, String contraseña){
+        int userId = 0;
+        try {
+            query = conn.prepareStatement("SELECT id_usuario FROM usuarios WHERE correo = ? AND contrasena = ?");
+            query.setString(1, correo);
+            query.setString(2, contrasena);
+
+            ResultSet rs = query.executeQuery();
+            if (rs.next()) {
+                userId = rs.getInt("id_usuario"); // Extrae el id_usuario
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejo de errores aquí
+        }
+        return userId; // Devuelve 0 si no se encuentra el usuario
     }
 }

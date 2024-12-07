@@ -12,5 +12,6 @@ public interface IUsuarioDAO {
 	public boolean deleteUsuario(int idUsuario);
 
 	public List<Usuario> getUsuarios(); //Read todos los usuarios
-	
+	public int validarCredenciales(String correo, String contraseña);
+
 }

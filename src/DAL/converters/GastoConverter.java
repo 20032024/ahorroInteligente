@@ -1,5 +1,36 @@
 package DAL.converters;
 
+import DAL.dtos.GastoDTO;
+import DAL.entities.Gasto;
+
+public class GastoConverter {
+
+    public Gasto toEntity(GastoDTO dto, int idUsuario, int idCategoria, int idTipoGasto, int idLugar) {
+        Gasto gasto = new Gasto();
+        gasto.setId_usuario(idUsuario); // Asociamos el usuario
+        gasto.setMonto(dto.getMonto());
+        gasto.setFecha(java.sql.Date.valueOf(dto.getFecha())); // Convertimos String a Date
+        gasto.setId_categoria(idCategoria);
+        gasto.setId_tipoGasto(idTipoGasto);
+        gasto.setId_lugar(idLugar);
+        gasto.setMetodo_pago("Efectivo");
+        // Puedes agregar más atributos si es necesario
+        return gasto;
+    }
+
+    public GastoDTO toDTO(Gasto entity, String tipoGasto, String categoria, String lugar) {
+        return new GastoDTO(
+            tipoGasto,
+            entity.getMonto(),
+            categoria,
+            lugar,
+            entity.getFecha().toString()
+        );
+    }
+}
+
+/**package DAL.converters;
+
 import BLO.services.CategoriaService;
 import BLO.services.LugarService;
 import BLO.services.TipoGastoService;
@@ -39,5 +70,5 @@ public class GastoConverter extends AbstractConverter<Gasto, GastoDTO> {
             tipoGasto
         );
     }
-}
+}*/
 

@@ -69,5 +69,4 @@ public class UsuarioConverter extends AbstractConverter<Usuario, UsuarioDTO> {
         );
         return dto;
     }
-
 }
