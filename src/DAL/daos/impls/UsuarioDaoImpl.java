@@ -1,6 +1,6 @@
 package DAL.daos.impls;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.util.List;
 import DAL.connection.PostgreSQL.PostgresDbConn;
 import DAL.converters.UsuarioConverter;
 import DAL.daos.interfaces.IUsuarioDAO;
-import DAL.dtos.ProfesionDTO;
+//import DAL.dtos.ProfesionDTO;
 import DAL.dtos.UsuarioRegistroDTO;
 import DAL.entities.Usuario;
 
@@ -42,14 +42,14 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
         stmt.setInt(4, usuarioEntity.getEdad());
         stmt.setString(5, usuarioEntity.getCorreo());
         stmt.setString(6, usuarioEntity.getContraseña());
-        stmt.setDate(7, new java.sql.Date(usuarioEntity.getFechaRegistro().getTime()));
+        stmt.setDate(7, java.sql.Date.valueOf(usuarioEntity.getFechaRegistro()));
 
-        ProfesionDTO profesionDTO = usuarioRegistroDTO.getProfesiones().get(0); // Accedemos a la primera profesión
+       /**  ProfesionDTO profesionDTO = usuarioRegistroDTO.getProfesiones().get(0); // Accedemos a la primera profesión
         // Tomar los datos de la profesión y el ingreso
         stmt.setInt(8, profesionDTO.getIdProfesion());
         stmt.setInt(9, profesionDTO.getIdTipoIngreso());
         stmt.setBigDecimal(10, BigDecimal.valueOf(profesionDTO.getMontoIngreso())); // Convertir double a BigDecimal
-
+*/
 
         // Ejecutar el procedimiento almacenado
         resultado = stmt.executeUpdate() > 0;
@@ -75,7 +75,7 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
                 usuario.setEdad(rs.getByte("edad"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContraseña(rs.getString("contraseña"));
-                usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
+                usuario.setFechaRegistro(rs.getDate("fechaRegistro").toLocalDate());
                 usuarios.add(usuario);
 
             }
@@ -96,7 +96,7 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
             query.setByte(2, usuario.getEdad());
             query.setString(3, usuario.getCorreo());
             query.setString(4, usuario.getContraseña());
-            query.setDate(5, new java.sql.Date(usuario.getFechaRegistro().getTime()));
+            query.setDate(5, java.sql.Date.valueOf(usuario.getFechaRegistro()));
             query.setInt(6, usuario.getId_usuario());
 
             return query.executeUpdate() > 0; // Retorna true si la actualización fue exitosa
@@ -136,7 +136,7 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
                 usuario.setEdad(rs.getByte("edad"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContraseña(rs.getString("contraseña"));
-                usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
+                usuario.setFechaRegistro(rs.getDate("fechaRegistro").toLocalDate());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,7 +150,7 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
         try {
             query = conn.prepareStatement("SELECT id_usuario FROM usuarios WHERE correo = ? AND contrasena = ?");
             query.setString(1, correo);
-            query.setString(2, contrasena);
+            query.setString(2, contraseña);
 
             ResultSet rs = query.executeQuery();
             if (rs.next()) {

@@ -44,7 +44,8 @@ public class GastoDAOImpl implements IGastoDAO {
                     rs.getDouble("monto"),
                     rs.getString("categoria"),
                     rs.getString("lugar"),
-                    rs.getString("fecha")
+                    rs.getDate("fecha").toLocalDate(),
+                    rs.getInt("id_usuario")
                 ));
             }
             rs.close();
@@ -67,7 +68,7 @@ public class GastoDAOImpl implements IGastoDAO {
                 gasto = new Gasto();
                 gasto.setId_gasto(rs.getInt("id_gasto"));
                 gasto.setId_usuario(rs.getInt("id_usuario"));
-                gasto.setFecha(rs.getDate("fecha"));
+                gasto.setFecha(rs.getDate("fecha").toLocalDate());
                 gasto.setMonto(rs.getDouble("monto"));
                 gasto.setMetodo_pago(rs.getString("metodo_pago"));
                 gasto.setId_lugar(rs.getInt("id_lugar"));
@@ -87,7 +88,7 @@ public class GastoDAOImpl implements IGastoDAO {
 
         try (PreparedStatement query = conn.prepareStatement(sql)) {
             query.setInt(1, gasto.getId_usuario());
-            query.setDate(2, new java.sql.Date(gasto.getFecha().getTime()));
+            query.setDate(2, java.sql.Date.valueOf(gasto.getFecha()));
             query.setDouble(3, gasto.getMonto());
             query.setString(4, gasto.getMetodo_pago());
             query.setInt(5, gasto.getId_lugar());
@@ -125,7 +126,7 @@ public class GastoDAOImpl implements IGastoDAO {
             stmt.setInt(4, gasto.getId_categoria());
             stmt.setInt(5, gasto.getId_lugar());
             stmt.setString(6, gasto.getMetodo_pago());
-            stmt.setDate(7, new java.sql.Date(gasto.getFecha().getTime()));
+            stmt.setDate(7, java.sql.Date.valueOf(gasto.getFecha()));
 
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {

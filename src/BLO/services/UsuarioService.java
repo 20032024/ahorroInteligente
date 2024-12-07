@@ -1,6 +1,7 @@
 package BLO.services;
 
 import DAL.daos.impls.UsuarioDaoImpl;
+import DAL.dtos.ProfesionDTO;
 import DAL.dtos.UsuarioRegistroDTO;
 
 public class UsuarioService {
@@ -20,7 +21,7 @@ public class UsuarioService {
             throw new CorreoRepetidoException("El correo ya está registrado.");
         }
 
-        if (usuarioRegistroDTO.getEdad() < 18 || usuarioRegistroDTO.getEdad() > 100) {
+        if (usuarioRegistroDTO.getEdad() < 10 || usuarioRegistroDTO.getEdad() > 100) {
             throw new EdadInvalidaException("La edad debe ser entre 18 y 100 años.");
         }
 

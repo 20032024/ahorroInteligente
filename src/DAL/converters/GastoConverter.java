@@ -9,7 +9,7 @@ public class GastoConverter {
         Gasto gasto = new Gasto();
         gasto.setId_usuario(idUsuario); // Asociamos el usuario
         gasto.setMonto(dto.getMonto());
-        gasto.setFecha(java.sql.Date.valueOf(dto.getFecha())); // Convertimos String a Date
+        gasto.setFecha(dto.getFecha()); // Convertimos String a Date
         gasto.setId_categoria(idCategoria);
         gasto.setId_tipoGasto(idTipoGasto);
         gasto.setId_lugar(idLugar);
@@ -24,7 +24,8 @@ public class GastoConverter {
             entity.getMonto(),
             categoria,
             lugar,
-            entity.getFecha().toString()
+            entity.getFecha(),
+            entity.getId_usuario()
         );
     }
 }

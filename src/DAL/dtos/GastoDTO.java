@@ -1,14 +1,19 @@
 package DAL.dtos;
+import java.time.LocalDate;
+
     
     public class GastoDTO {//voy a obtener el id usuario en al momento de iniciar sesión
-    private String fecha;
+    private LocalDate fecha;
     private double monto;
     private String lugar;
     private String tipoGasto;
     private String categoria;
+    private int id_usuario;
 
     // Constructor, getters y setters
-    public GastoDTO(String tipoGasto, double monto, String categoria, String lugar, String fecha) {
+    public GastoDTO(String tipoGasto, double monto, 
+                    String categoria, String lugar, LocalDate fecha,
+                    int id_usuario) {
         this.tipoGasto = tipoGasto;
         this.monto = monto;
         this.categoria = categoria;
@@ -48,11 +53,18 @@ package DAL.dtos;
         this.lugar = lugar;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
     }

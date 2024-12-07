@@ -1,5 +1,5 @@
 package DAL.entities;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Usuario {
     private int id_usuario;
@@ -9,7 +9,7 @@ public class Usuario {
     private byte edad;
     private String correo;
     private String contraseña;
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro;
 
 // Getters y setters
 public int getId_usuario() {
@@ -68,11 +68,11 @@ public void setContraseña(String contraseña) {
     this.contraseña = contraseña;
 }
 
-public Date getFechaRegistro() {
+public LocalDate getFechaRegistro() {
     return fechaRegistro;
 }
 
-public void setFechaRegistro(Date fechaRegistro) {
+public void setFechaRegistro(LocalDate fechaRegistro) {
     this.fechaRegistro = fechaRegistro;
 }
 
