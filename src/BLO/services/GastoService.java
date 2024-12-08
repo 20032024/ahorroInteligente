@@ -16,7 +16,7 @@ public class GastoService {
         this.gastoConverter = gastoConverter;
     }
 
-    public String validarGasto(GastoDTO gastoDTO) {
+    public String validarGasto(GastoDTO gastoDTO) {//esto mejor lo manejamos desde el gui 
         if (gastoDTO.getMonto() <= 0) {
             return "El monto debe ser mayor a 0.";
         }
@@ -35,60 +35,21 @@ public class GastoService {
     }
 
     public boolean registrarGasto(GastoDTO gastoDTO, int idUsuario) {
-        // Validar el gasto primero
-        String error = validarGasto(gastoDTO);
-        if (error != null) {
-            System.out.println("Error al registrar gasto: " + error);
-            return false;
-        }
+        boolean exito = false; 
 
     // Usar el converter para convertir a entidad
-    Gasto gasto = gastoConverter.toEntity(gastoDTO,idUsuario,gastoDTO.getCategoria(),gastoDTO.getTipoGasto(),gastoDTO.getLugar());
+    Gasto gasto = gastoConverter.toEntity(
+        gastoDTO,
+        idUsuario,
+        gastoDTO.getId_categoria(),
+        gastoDTO.getId_tipoGasto(),
+        gastoDTO.getId_lugar());
 
     // Usar el DAO para registrar el gasto
     if (gastoDAO.registrarGasto(gasto)) {
-        System.out.println("Gasto agregado correctamente.");
-    } else {
-        System.out.println("Error al agregar el gasto.");
-    }
-       
-    }
-
-    /**
-     * Simula la obtención de un ID para la categoría desde la base de datos.
-     * En la implementación real, podrías usar un DAO o mapa estático.
-     */
-    private int obtenerIdCategoria(String categoria) {
-        switch (categoria.toLowerCase()) {
-            case "comida": return 1;
-            case "salud": return 2;
-            case "transporte": return 3;
-            // Agrega las demás categorías aquí
-            default: return -1; // Categoría inválida
-        }
-    }
-
-    /**
-     * Simula la obtención de un ID para el tipo de gasto.
-     */
-    private int obtenerIdTipoGasto(String tipoGasto) {
-        switch (tipoGasto.toLowerCase()) {
-            case "base": return 1;
-            case "hormiga": return 2;
-            default: return -1; // Tipo de gasto inválido
-        }
-    }
-
-    /**
-     * Simula la obtención de un ID para el lugar.
-     */
-    private int obtenerIdLugar(String lugar) {
-        switch (lugar.toLowerCase()) {
-            case "centro": return 1;
-            case "norte": return 2;
-            case "sur": return 3;
-            default: return -1; // Lugar inválido
-        }
+        exito = true; 
+    } 
+    return exito;   
     }
 }
 

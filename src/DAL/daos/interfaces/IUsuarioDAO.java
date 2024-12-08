@@ -13,5 +13,5 @@ public interface IUsuarioDAO {
 
 	public List<Usuario> getUsuarios(); //Read todos los usuarios
 	public int validarCredenciales(String correo, String contraseña);
-
+	public boolean validarCorreoExistente (String correo);
 }

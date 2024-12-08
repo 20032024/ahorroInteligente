@@ -18,7 +18,8 @@ public class UsuarioRegistroDTO {
 
     // Constructor
     public UsuarioRegistroDTO(String nombre, String apPaterno, String apMaterno, byte edad, 
-                              String correo, String contraseña, LocalDate fechaRegistro, int id_tipoIngreso, int id_profesion,double montoIngreso) {
+                              String correo, String contraseña, LocalDate fechaRegistro, 
+                              int id_tipoIngreso, int id_profesion,double montoIngreso) {
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;

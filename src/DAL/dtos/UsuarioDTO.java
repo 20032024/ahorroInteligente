@@ -1,12 +1,12 @@
 package DAL.dtos;
 
-import java.util.List;
+//import java.util.List;
 
 public class UsuarioDTO {
     private int id_usuario;
     private String nombre;
     private String correo;
-    private List<GastoDTO> gastos; // DTO para representar los gastos del usuario.
+ //   private List<GastoDTO> gastos; // DTO para representar los gastos del usuario.
 
     public int getId_usuario() {
         return id_usuario;
@@ -32,12 +32,12 @@ public class UsuarioDTO {
         this.correo = correo;
     }
 
-    public List<GastoDTO> getGastos() {
+   /**  public List<GastoDTO> getGastos() {
         return gastos;
     }
 
     public void setGastos(List<GastoDTO> gastos) {
         this.gastos = gastos;
-    }
+    }*/
 }
 

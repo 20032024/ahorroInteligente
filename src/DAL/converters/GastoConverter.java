@@ -18,10 +18,11 @@ public class GastoConverter {
         return gasto;
     }
 
-    public GastoDTO toDTO(Gasto entity, String tipoGasto, String categoria, String lugar) {
+    public GastoDTO toDTO(Gasto entity, String descripcion, String tipoGasto, String categoria, String lugar) {
         return new GastoDTO(
-            tipoGasto,
+            descripcion,
             entity.getMonto(),
+            tipoGasto,
             categoria,
             lugar,
             entity.getFecha(),

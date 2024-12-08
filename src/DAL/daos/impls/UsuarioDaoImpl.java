@@ -162,4 +162,22 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
         }
         return userId; // Devuelve 0 si no se encuentra el usuario
     }
+
+    @Override
+public boolean validarCorreoExistente(String correo) {
+    boolean existe = false;
+    try {
+        query = conn.prepareStatement("SELECT 1 FROM usuarios WHERE correo = ?");
+        query.setString(1, correo);
+
+        ResultSet rs = query.executeQuery();
+        if (rs.next()) {
+            existe = true; // Si hay un resultado, significa que el correo ya existe
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Manejo de errores aquí, por ejemplo, lanzar una excepción personalizada o loggear el error
+    }
+    return existe; // Devuelve true si existe, false si no
+}
 }

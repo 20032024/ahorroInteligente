@@ -40,8 +40,9 @@ public class GastoDAOImpl implements IGastoDAO {
 
             while (rs.next()) {
                 gastos.add(new GastoDTO(
-                    rs.getString("tipo_gasto"),
+                    rs.getString("descripcion"),
                     rs.getDouble("monto"),
+                    rs.getString("tipo_gasto"),
                     rs.getString("categoria"),
                     rs.getString("lugar"),
                     rs.getDate("fecha").toLocalDate(),

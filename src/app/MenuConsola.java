@@ -1,8 +1,12 @@
+package app;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
 import BLO.services.GastoService;
 import BLO.services.UsuarioService;
+import DAL.converters.GastoConverter;
+import DAL.daos.impls.GastoDAOImpl;
 import DAL.dtos.GastoDTO;
 import DAL.dtos.UsuarioDTO;
 import DAL.dtos.UsuarioRegistroDTO;
@@ -10,6 +14,7 @@ import DAL.dtos.UsuarioRegistroDTO;
 public class MenuConsola {
     private static Scanner scanner = new Scanner(System.in);
     private static UsuarioService usuarioService = new UsuarioService();
+    private static GastoService gastoService = new GastoService(new GastoDAOImpl(), new GastoConverter());
     //private static ReporteService reporteService = new ReporteService();
     private static UsuarioDTO usuarioActual = null;
 
@@ -108,13 +113,6 @@ public class MenuConsola {
     }
 
 
-
-
-
-
-
-
-
     private static void iniciarSesion() {
         System.out.println("\n*** Iniciar Sesión ***");
         System.out.print("Correo: ");
@@ -123,9 +121,10 @@ public class MenuConsola {
         String contrasena = scanner.nextLine();
 
         // Verificar usuario en la base de datos
-        usuarioActual.setId_usuario(usuarioService.autenticarUsuario(correo, contrasena)); 
+        int idUsuario = usuarioService.autenticarUsuario(correo, contrasena); 
 
-        if (usuarioActual != null) {
+        if (idUsuario != 0) {
+            usuarioActual = usuarioService.getUsuarioPorId(idUsuario);
             System.out.println("¡Bienvenido, " + usuarioActual.getNombre() + "!");
             mostrarMenuSesion();
         } else {
@@ -194,16 +193,13 @@ public class MenuConsola {
 
     private static void agregarGasto() {
     System.out.println("\n*** Agregar Gasto ***");
-
+    System.out.print("Descripción del gasto: ");
+    String descripcion = scanner.nextLine();
     System.out.print("Monto: ");
     double monto = scanner.nextDouble();
     scanner.nextLine(); // Limpiar buffer
-
     System.out.print("Método de pago (Efectivo/Tarjeta): ");
     String metodoPago = scanner.nextLine();
-
-    System.out.print("Descripción: ");
-    String descripcion = scanner.nextLine();
 
     int tipoGasto = 0;
     while (tipoGasto != 1 && tipoGasto != 2) {
@@ -223,19 +219,27 @@ public class MenuConsola {
     System.out.println("1. Centro\n2. Norte\n3. Sur");
     int lugar = scanner.nextInt();
     scanner.nextLine(); // Limpiar buffer
+    LocalDate fecha = LocalDate.now();
+
 
     // Crear el DTO y enviar al servicio
-    GastoDTO gastoDTO = new GastoDTO(//ES POR LOS TIPOS DE DATO HAY QEUE OBTENER LAS DESCRIPCIONES. 
+    GastoDTO gastoDTO = new GastoDTO( 
+    monto,    
+    descripcion,
         tipoGasto,
-        monto,
         categoria,
-        lugar,
-        LocalDate.now(), // Fecha automática
-        usuarioActual.getId_usuario()
+        lugar, 
+        usuarioActual.getId_usuario(),
+        fecha // Fecha automática
     );
 
-    gastoService.agregarGasto(gastoDTO);
-    System.out.println("Gasto registrado exitosamente.");
+
+    if (gastoService.registrarGasto(gastoDTO,usuarioActual.getId_usuario())){
+        System.out.println("Gasto registrado exitosamente.");
+    }
+    else {
+        System.out.println("No se pudo agregar el gasto.");
+    }
 }
 
     private static void editarPerfil() {
