@@ -1,9 +1,9 @@
 package DAL.entities;
 
 public class Tipo_gasto {
-    private int id_tipo_gasto;
+    private int id_tipoGasto;
     private String descripcion; 
-    private int clave_tipo_gasto;
+    private int clave_tipoGasto;
 
     public String getDescripcion() {
         return descripcion;
@@ -11,17 +11,17 @@ public class Tipo_gasto {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public int getId_tipo_gasto() {
-        return id_tipo_gasto;
+    public int getId_tipoGasto() {
+        return id_tipoGasto;
     }
-    public void setId_tipo_gasto(int id_tipo_gasto) {
-        this.id_tipo_gasto = id_tipo_gasto;
+    public void setId_tipoGasto(int id_tipoGasto) {
+        this.id_tipoGasto = id_tipoGasto;
     }
-    public int getClave_tipo_gasto() {
-        return clave_tipo_gasto;
+    public int getClave_tipoGasto() {
+        return clave_tipoGasto;
     }
-    public void setClave_tipo_gasto(int clave_tipo_gasto) {
-        this.clave_tipo_gasto = clave_tipo_gasto;
+    public void setClave_tipoGasto(int clave_tipoGasto) {
+        this.clave_tipoGasto = clave_tipoGasto;
     }
     
 }

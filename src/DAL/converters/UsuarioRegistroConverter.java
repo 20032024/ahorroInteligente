@@ -16,7 +16,7 @@ public class UsuarioRegistroConverter extends AbstractConverter<Usuario, Usuario
         usuario.setEdad(dto.getEdad());
         usuario.setCorreo(dto.getCorreo());
         usuario.setContraseña(dto.getContraseña());
-        usuario.setFecha_registro(dto.getFecha_registro());
+        usuario.setFechaRegistro(dto.getFechaRegistro());
         return usuario;
     }
 
@@ -31,7 +31,7 @@ public class UsuarioRegistroConverter extends AbstractConverter<Usuario, Usuario
         dto.setEdad(entity.getEdad());
         dto.setCorreo(entity.getCorreo());
         dto.setContraseña(entity.getContraseña());
-        dto.setFecha_registro(entity.getFecha_registro());
+        dto.setFechaRegistro(entity.getFechaRegistro());
         return dto;
     }
 }

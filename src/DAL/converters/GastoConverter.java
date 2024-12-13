@@ -1,5 +1,38 @@
 package DAL.converters;
 
+import DAL.dtos.GastoDTO;
+import DAL.entities.Gasto;
+
+public class GastoConverter {
+
+    public Gasto toEntity(GastoDTO dto, int idUsuario, int idCategoria, int idTipoGasto, int idLugar) {
+        Gasto gasto = new Gasto();
+        gasto.setId_usuario(idUsuario); // Asociamos el usuario
+        gasto.setMonto(dto.getMonto());
+        gasto.setFecha(dto.getFecha()); // Convertimos String a Date
+        gasto.setId_categoria(idCategoria);
+        gasto.setId_tipoGasto(idTipoGasto);
+        gasto.setId_lugar(idLugar);
+        gasto.setMetodo_pago("Efectivo");
+        // Puedes agregar más atributos si es necesario
+        return gasto;
+    }
+
+    public GastoDTO toDTO(Gasto entity, String descripcion, String tipoGasto, String categoria, String lugar) {
+        return new GastoDTO(
+            descripcion,
+            entity.getMonto(),
+            tipoGasto,
+            categoria,
+            lugar,
+            entity.getFecha(),
+            entity.getId_usuario()
+        );
+    }
+}
+
+/**package DAL.converters;
+
 import BLO.services.CategoriaService;
 import BLO.services.LugarService;
 import BLO.services.TipoGastoService;
@@ -30,7 +63,7 @@ public class GastoConverter extends AbstractConverter<Gasto, GastoDTO> {
 
         var LugarDTO = lugarService.getLugarById(entity.getId_lugar());
         var CategoriaDTO = categoriaService.getCategoriaById(entity.getId_categoria());
-        var tipoGasto = tipoGastoService.getTipoGastoById(entity.getId_tipo_gasto());
+        var tipoGasto = tipoGastoService.getTipoGastoById(entity.getId_tipoGasto());
         return new GastoDTO(
             entity.getId_usuario(),
             entity.getMonto(),
@@ -39,5 +72,5 @@ public class GastoConverter extends AbstractConverter<Gasto, GastoDTO> {
             tipoGasto
         );
     }
-}
+}*/
 

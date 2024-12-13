@@ -1,16 +1,16 @@
 package DAL.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Gasto {
     private int id_gasto; 
     private int id_usuario; //Utilizo como referencia el id Usuario. 
-    private Date fecha; 
+    private LocalDate fecha; 
     private double monto; 
     private String metodo_pago; // 1.- Tarjeta y 2.- Efectivo
     private int id_lugar; 
     private int id_categoria; 
-    private int id_tipo_gasto;
+    private int id_tipoGasto;
 
     public int getId_gasto() {
         return id_gasto;
@@ -24,10 +24,10 @@ public class Gasto {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     public double getMonto() {
@@ -54,10 +54,10 @@ public class Gasto {
     public void setId_categoria(int id_categoria) {
         this.id_categoria = id_categoria;
     }
-    public int getId_tipo_gasto() {
-        return id_tipo_gasto;
+    public int getId_tipoGasto() {
+        return id_tipoGasto;
     }
-    public void setId_tipo_gasto(int id_tipo_gasto) {
-        this.id_tipo_gasto = id_tipo_gasto;
+    public void setId_tipoGasto(int id_tipoGasto) {
+        this.id_tipoGasto = id_tipoGasto;
     }
 }
